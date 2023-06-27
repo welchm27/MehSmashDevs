@@ -10,7 +10,7 @@ window.addEventListener("keydown", handleKeyDown);
 window.addEventListener("keyup", handleKeyUp);
 
 // Create the player object
-const player = new Player(100,140,10,10,'blue',3);
+ export const player = new Player(100,140,10,10,'blue',3);
 
 // Enemy class
 class Enemy {

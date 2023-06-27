@@ -1,4 +1,5 @@
 import { controls } from "./player.js";
+import { player } from "../main.js";
 
 // Event listeners for player controls
 export function handleKeyDown(event) {
