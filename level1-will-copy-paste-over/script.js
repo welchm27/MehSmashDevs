@@ -56,17 +56,11 @@ window.addEventListener("load", function () {
       this.weight = 1;
     }
     draw(context) {
-    //   context.strokeStyle = "white"; // white outline for hitbox
-    //   context.strokeRect(this.x, this.y, this.width, this.height); // draw rectangle hitbox
-    //   context.beginPath(); // part of circle hitbox
-    //   context.arc(
-    //     this.x + this.width / 2,
-    //     this.y + this.height / 2,
-    //     this.width / 2,
-    //     0,
-    //     Math.PI * 2
-    //   ); // location and size of circle hitbox
-    //   context.stroke(); // draw circle hitbox
+      context.strokeStyle = "white"; // white outline for hitbox
+      context.beginPath(); // part of circle hitbox
+      context.arc(this.x + this.width / 2, this.y + this.height / 2 + 20,
+        this.width / 3, 0, Math.PI * 2); // location and size of circle hitbox
+      context.stroke(); // draw circle hitbox
       context.drawImage(
         this.image,
         this.frameX * this.width,
@@ -82,10 +76,10 @@ window.addEventListener("load", function () {
     update(input, deltaTime, enemies) {
       // collision detection
       enemies.forEach((enemy) => {
-        const dx = (enemy.x + enemy.width/2) - (this.x + this.width/2);         // builds an imaginary triangle from middle of enemy to bottom of player
-        const dy = (enemy.y + enemy.height/2) - (this.y + this.height/2);        // and from bottom of player to middle of player
+        const dx = (enemy.x + enemy.width/2-20) - (this.x + this.width/2);         // builds an imaginary triangle from middle of enemy to bottom of player
+        const dy = (enemy.y + enemy.height/2) - (this.y + this.height/2+20);        // and from bottom of player to middle of player
         const distance = Math.sqrt(dx * dx + dy * dy);  // finds the distance of the Hypotenuse of the imaginary triangle
-        if (distance < enemy.width/2 + this.width/2) {      // if that distance is less than half the width of the enemy and player
+        if (distance < enemy.width/3 + this.width/3) {      // if that distance is less than half the width of the enemy and player
           gameOver = true;                              // detect collision and gameOver = true
         }
       });
@@ -177,28 +171,15 @@ window.addEventListener("load", function () {
       this.markedForDeletion = false;
     }
     draw(context) {
-    //   context.strokeStyle = "white"; // white box around hitbox
-    //   context.strokeRect(this.x, this.y, this.width, this.height); // rectangle hitbox (not going to use)
-    //   context.beginPath(); // part of circle hitbox
-    //   context.arc(
-    //     this.x + this.width / 2.2,
-    //     this.y + this.height / 1.6,
-    //     this.width / 2,
-    //     0,
-    //     Math.PI * 2
-    //   ); // circle hitbox
-    //   context.stroke(); // draw the circle hitbox
-      context.drawImage(
-        this.image,
-        this.frameX * this.width,
-        0,
-        this.width,
-        this.height,
-        this.x,
-        this.y,
-        this.width,
-        this.height
+      context.drawImage(this.image, this.frameX * this.width, 0,
+        this.width, this.height, this.x, this.y, this.width, this.height
       );
+      context.strokeStyle = "white"; // white box around hitbox
+      context.beginPath(); // part of circle hitbox
+      context.arc(this.x + this.width / 2 - 20, this.y + this.height / 2,
+        this.width / 3, 0, Math.PI * 2
+      ); // circle hitbox
+      context.stroke(); // draw the circle hitbox
     }
     update(deltaTime) {
       if (this.frameTimer > this.frameInterval) {
@@ -261,7 +242,7 @@ window.addEventListener("load", function () {
     lastTime = timeStamp;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     background.draw(ctx);
-    background.update();
+    // background.update();
     player.draw(ctx);
     player.update(input, deltaTime, enemies);
     handleEnemies(deltaTime);
