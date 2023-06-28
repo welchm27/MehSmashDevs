@@ -1,15 +1,7 @@
-
-export const controls = {
-    left: false, // Is the left arrow key pressed?
-    right: false, // Is the right arrow key pressed?
-    up: false, // Is the up arrow key pressed?
-    down: false, // Is the down arrow key pressed?
-    space: false, // Is the spacebar pressed?
-    canJump: true // Can the player jump?
-};
+import { controls } from "./input.js";
 
 // Player class
- export class Player {
+class Player {
     constructor(x, y, width, height, color, speed) {
       this.x = x;
       this.y = y;
@@ -35,7 +27,7 @@ export const controls = {
     } else if (controls.right) {
       // Move right
       this.x += this.speed;
-    }
+    } 
 
     // Limit the player within the canvas bounds
     if (this.x < 0) {
@@ -83,3 +75,6 @@ export const controls = {
     this.isCrouching = false;
   }
 }
+
+// Create the player object
+export const player = new Player(100,140,10,10,'blue',3);

@@ -1,5 +1,14 @@
-import { controls } from "./player.js";
-import { player } from "../main.js";
+import { player } from "./player.js";
+
+export const controls = {
+  left: false, // Is the left arrow key pressed?
+  right: false, // Is the right arrow key pressed?
+  up: false, // Is the up arrow key pressed?
+  down: false, // Is the down arrow key pressed?
+  space: false, // Is the spacebar pressed?
+  canJump: true // Can the player jump?
+};
+
 
 // Event listeners for player controls
 export function handleKeyDown(event) {
