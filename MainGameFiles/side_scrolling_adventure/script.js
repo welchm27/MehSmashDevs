@@ -1,7 +1,3 @@
-import InputHandler from "../modules/inputHandler.js";
-
-const input = new InputHandler();
-
 window.addEventListener("load", function () {
   const canvas = document.getElementById("canvas1");
   const ctx = canvas.getContext("2d");
@@ -15,11 +11,29 @@ window.addEventListener("load", function () {
     constructor() {
       this.keys = [];
       window.addEventListener("keydown", (e) => {
-        handleKeyDown(e);
+        // if e.key is 's' and also this key is not in the array (-1), then add it
+        if (
+          (e.key === "s" ||
+            e.key === "w" ||
+            e.key === "d" ||
+            e.key === "a") &&
+          this.keys.indexOf(e.key) === -1
+        ) {
+          this.keys.push(e.key);
+        }
       });
       window.addEventListener("keyup", (e) => {
-        handleKeyUp(e);
+        if (
+          e.key === "s" ||
+          e.key === "w" ||
+          e.key === "d" ||
+          e.key === "a"
+        ) {
+          // when we release a key, if that key is s, remove it from the array
+          this.keys.splice(this.keys.indexOf(e.key), 1);
+        }
       });
+    
     }
   }
 
@@ -27,13 +41,13 @@ window.addEventListener("load", function () {
     constructor(gameWidth, gameHeight) {
       this.gameWidth = gameWidth;
       this.gameHeight = gameHeight;
-      this.width = 200;
-      this.height = 200;
+      this.width = 48;
+      this.height = 48;
       this.x = 10;
-      this.y = this.gameHeight - this.height;
+      this.y = this.gameHeight - this.height * 4;
       this.image = document.getElementById("playerImage");
       this.frameX = 0;
-      this.maxFrame = 8;
+      this.maxFrame = 5;
       this.frameY = 0;
       this.fps = 20;
       this.frameTimer = 0;
@@ -43,16 +57,6 @@ window.addEventListener("load", function () {
       this.weight = 1;
     }
     draw(context) {
-      context.strokeStyle = "white"; // white outline for hitbox
-      context.beginPath(); // part of circle hitbox
-      context.arc(
-        this.x + this.width / 2,
-        this.y + this.height / 2 + 20,
-        this.width / 3,
-        0,
-        Math.PI * 2
-      ); // location and size of circle hitbox
-      context.stroke(); // draw circle hitbox
       context.drawImage(
         this.image,
         this.frameX * this.width,
@@ -61,36 +65,46 @@ window.addEventListener("load", function () {
         this.height,
         this.x,
         this.y,
-        this.width,
-        this.height
+        this.width * 4,
+        this.height * 4
       );
+      /*   Draw the hitbox for the player
+      context.strokeStyle = "white"; // white outline for hitbox
+      context.beginPath(); // part of circle hitbox
+      context.arc(this.x + this.width, this.y + this.height * 2.6, this.width, 0, Math.PI * 2); // location and size of circle hitbox
+      context.stroke(); // draw circle hitbox
+      */
+
     }
     update(input, deltaTime, enemies) {
       // collision detection
       enemies.forEach((enemy) => {
-        const dx = enemy.x + enemy.width / 2 - 20 - (this.x + this.width / 2); // builds an imaginary triangle from middle of enemy to bottom of player
-        const dy = enemy.y + enemy.height / 2 - (this.y + this.height / 2 + 20); // and from bottom of player to middle of player
+        const dx = enemy.x + enemy.width / 4 - (this.x + this.width); // builds an imaginary triangle from middle of enemy to bottom of player
+        const dy = enemy.y + enemy.height / 4 - (this.y + this.height * 2.6); // and from bottom of player to middle of player
         const distance = Math.sqrt(dx * dx + dy * dy); // finds the distance of the Hypotenuse of the imaginary triangle
-        if (distance < enemy.width / 3 + this.width / 3) {
+        if (distance < enemy.width / 3 + this.width) {
           // if that distance is less than half the width of the enemy and player
-          gameOver = true; // detect collision and gameOver = true
+          gameOver = true;                              // detect collision and gameOver = true
         }
       });
       // sprite animation
       if (this.frameTimer > this.frameInterval) {
-        if (this.frameX >= this.maxFrame) this.frameX = 0;
-        else this.frameX++;
+        if (this.frameX >= this.maxFrame) {
+          this.frameX = 0;
+        } else {
+          this.frameX++;
+        }
         this.frameTimer = 0;
       } else {
         this.frameTimer += deltaTime;
       }
 
       // controls
-      if (input.keys.indexOf("ArrowRight") > -1) {
+      if (input.keys.indexOf("d") > -1) {
         this.speed = 5;
-      } else if (input.keys.indexOf("ArrowLeft") > -1) {
+      } else if (input.keys.indexOf("a") > -1) {
         this.speed = -5;
-      } else if (input.keys.indexOf("ArrowUp") > -1 && this.onGround()) {
+      } else if (input.keys.indexOf("w") > -1 && this.onGround()) {
         this.vy -= 30;
       } else {
         this.speed = 0;
@@ -105,17 +119,17 @@ window.addEventListener("load", function () {
       if (!this.onGround()) {
         this.vy += this.weight;
         this.maxFrame = 5;
-        this.frameY = 1;
+        this.frameY = 0;
       } else {
         this.vy = 0;
-        this.maxFrame = 8;
+        this.maxFrame = 5;
         this.frameY = 0;
       }
       if (this.y > this.gameHeight - this.height)
         this.y = this.gameHeight - this.height;
     }
     onGround() {
-      return this.y >= this.gameHeight - this.height;
+      return this.y >= this.gameHeight - this.height * 4;
     }
   }
 
@@ -175,6 +189,7 @@ window.addEventListener("load", function () {
         this.width,
         this.height
       );
+      /*  Draw the hitbox for the enemy
       context.strokeStyle = "white"; // white box around hitbox
       context.beginPath(); // part of circle hitbox
       context.arc(
@@ -185,6 +200,7 @@ window.addEventListener("load", function () {
         Math.PI * 2
       ); // circle hitbox
       context.stroke(); // draw the circle hitbox
+      */
     }
     update(deltaTime) {
       if (this.frameTimer > this.frameInterval) {
