@@ -9,7 +9,6 @@ export const controls = {
   canJump: true // Can the player jump?
 };
 
-
 // Event listeners for player controls
 export function handleKeyDown(event) {
     if (event.key === "a") {

@@ -1,13 +1,13 @@
-import { player } from "./modules/player.js";
-import { handleKeyDown, handleKeyUp } from "./modules/input.js";
+import { player } from "../modules/player.js";
+import { handleKeyDown, handleKeyUp } from "../modules/input.js";
 
 // Get a reference to the canvas and its 2D rendering context
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 
-  // Event listener for player input
-  window.addEventListener("keydown", handleKeyDown);
-  window.addEventListener("keyup", handleKeyUp);
+// Event listener for player input
+window.addEventListener("keydown", handleKeyDown);
+window.addEventListener("keyup", handleKeyUp);
 
 // Enemy class
 class Enemy {
