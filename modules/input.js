@@ -1,5 +1,4 @@
 import { player } from "./player.js";
-import { enemy1 } from "./enemy.js";
 
 export const controls = {
   left: false, // Is the left arrow key pressed?
@@ -21,6 +20,10 @@ export function handleKeyDown(event) {
       controls.down = true;
       player.crouch();
     }
+    socket.emit("keydown", {
+      key: event.key,
+      playerID: player.id,
+    });
 }
 export function handleKeyUp(event) {
     if (event.key === "a") {
@@ -33,4 +36,8 @@ export function handleKeyUp(event) {
       controls.down = false;
       player.unCrouch();
     } 
+    socket.emit("keyup", {
+      key: event.key,
+      playerID: player.id,
+    });
 }
