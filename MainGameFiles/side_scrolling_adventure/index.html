@@ -7,10 +7,15 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <canvas id="canvas1"></canvas>
-    <img id="playerImage" src="./assets/Woodcutter_run.png" alt="playerImage" />
-    <img id="backgroundImage" src="./assets/background2.png" alt="backgroundImage"/>
-    <img id="enemyImage" src="./assets/enemy_1.png" alt="enemyImage"/>
+    <div id="container">
+      <canvas id="canvas1"></canvas>
+        <p>Game speed: <span id="showGameSpeed"></span></p>
+        <input type="range" min="6" max="15" value="5" class="slider" id="slider">
+
+      <img id="playerImage" src="./assets/Woodcutter_run.png" alt="playerImage" />
+      <img id="backgroundImage" src="./assets/background2.png" alt="backgroundImage"/>
+      <img id="enemyImage" src="./assets/enemy_1.png" alt="enemyImage"/>
+    </div>
 
     <script src="script.js" type="module"></script>
   </body>
