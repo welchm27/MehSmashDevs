@@ -23,3 +23,7 @@ function openClassicPong() {
 function openRacingGame() {
     window.location.href = "./MainGameFiles/racing_game/index.html";
 }
+
+function openGalagaClone() {
+  window.location.href = "./MainGameFiles/galaga-clone/galaga.html";
+}

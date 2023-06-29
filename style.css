@@ -57,6 +57,10 @@
         background-color: rgb(2, 128, 44);
       }
 
+      .button-container button:nth-child(7) {
+        background-color: rgb(255, 30, 0);
+      }
+
       .button-container button:last-child {
         background-color: orange;
       }
@@ -79,6 +83,9 @@
       }
       .button-container button:nth-child(6):hover {
         background-color: rgb(1, 39, 14);
+      }
+      .button-container button:nth-child(7):hover {
+        background-color: rgb(39, 2, 1);
       }
 
       .button-container button:last-child:hover {
