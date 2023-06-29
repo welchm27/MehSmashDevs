@@ -15,7 +15,7 @@ class Player {
       this.damagePercentage = 0;
       this.isJumping = false;
       this.jumpHeight = 60;
-      this.jumpDuration = 15;
+      this.jumpDuration = 5;
       this.jumpFrames = 0;
       this.initialY = y; // Store the initial y position
       // Add more properties and methods as needed
