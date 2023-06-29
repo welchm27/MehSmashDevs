@@ -1,0 +1,72 @@
+/* Apply a background color or image to the body */
+body {
+  background-color: #000000; /* Example: black background */
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the header */
+header {
+  background-color: #333333; /* Example: dark gray background */
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  color: #ffffff; /* Example: white text */
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  margin: 0;
+}
+
+/* Center the canvas */
+#game-canvas {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #ffffff; /* Example: white border */
+}
+
+/* Style the start button */
+#start-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #337ab7; /* Example: blue background */
+  color: #ffffff; /* Example: white text */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#start-button:hover {
+  background-color: #286090; /* Example: darker blue on hover */
+}
+
+/* Style the scoreboard */
+#scoreboard {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#scoreboard span {
+  display: inline-block;
+  margin: 0 10px;
+  color: #ffffff; /* Example: white text */
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+}
+
+/* Style the game over message */
+#game-over-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff; /* Example: white text */
+  font-family: Arial, sans-serif;
+  font-size: 36px;
+  text-align: center;
+}
+
+
