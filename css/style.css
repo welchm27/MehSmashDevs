@@ -4,3 +4,6 @@
     width: 800px;
   }
   
+  #playerImage {
+    display: none;
+  }
