@@ -64,4 +64,4 @@ class Enemy {
 }
   
   // Create the enemy character object
-  export const enemy1 = new Enemy(200, 140, 10, 10, 'red', 1.5);
+  export const enemy1 = new Enemy(200, 140, 5, 5, 'red', 1.5);

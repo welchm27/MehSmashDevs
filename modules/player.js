@@ -2,7 +2,7 @@ import { controls } from "./input.js";
 
 // Player class
 class Player {
-    constructor(x, y, width, height, color, image, speed) {
+    constructor(x, y, width, height, color, speed) {
       this.x = x;
       this.y = y;
       this.width = width;
@@ -10,7 +10,6 @@ class Player {
       this.normalHeight = height; // Store the normal height
       this.crouchHeight = height / 2; // Define the crouch height
       this.color = color;
-      this.image = image;
       this.speed = speed;
       this.damagePercentage = 0;
       this.isJumping = false;
@@ -18,7 +17,6 @@ class Player {
       this.jumpDuration = 5;
       this.jumpFrames = 0;
       this.initialY = y; // Store the initial y position
-      this.id = id; // Add an ID property to uniquely identify each player
     }
   // Add methods for player-specific functionality
   move(canvas) {
@@ -77,8 +75,5 @@ class Player {
   }
 }
 
-const playerImg = new Image();
-playerImg.src = "./Woodcutter.png"
-
 // Create the player object
-export const player = new Player(10,140,5,5,"blue", playerImg,3);
+export const player = new Player(10,140,5,5,"blue",3);
