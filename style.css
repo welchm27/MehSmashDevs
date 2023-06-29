@@ -1,0 +1,86 @@
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-image: url("https://images.squarespace-cdn.com/content/v1/55ef0e29e4b099e22cdc9eea/1467384916291-NYDWAS4NVZPB3K0N2VYA/16-bit-super-smash-bros-clone-rivals-of-aether-comes-to-xbox-one-july-13th-social.jpg?format=750w");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .content {
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 4rem;
+        color: limegreen;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .button-container button {
+        flex-basis: 30%;
+        padding: 1rem;
+        font-size: 1.5rem;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        
+      }
+
+      .button-container button:first-child {
+        background-color: limegreen;
+      }
+
+      .button-container button:nth-child(2) {
+        background-color: slateblue;
+      }
+
+      .button-container button:nth-child(3) {
+        background-color: blue;
+      }
+      .button-container button:nth-child(4) {
+        background-color: maroon;
+      }
+      .button-container button:nth-child(5) {
+        background-color: gold;
+      }
+      .button-container button:nth-child(6) {
+        background-color: rgb(2, 128, 44);
+      }
+
+      .button-container button:last-child {
+        background-color: orange;
+      }
+
+      .button-container button:hover {
+        background-color: darkgreen;
+      }
+
+      .button-container button:nth-child(2):hover {
+        background-color: darkslateblue;
+      }
+      .button-container button:nth-child(3):hover {
+        background-color: darkblue;
+      }
+      .button-container button:nth-child(4):hover {
+        background-color: rgb(71, 1, 1);
+      }
+      .button-container button:nth-child(5):hover {
+        background-color: goldenrod;
+      }
+      .button-container button:nth-child(6):hover {
+        background-color: rgb(1, 39, 14);
+      }
+
+      .button-container button:last-child:hover {
+        background-color: rgb(56, 37, 3);
+      }
