@@ -12,7 +12,7 @@ class Enemy {
         this.damagePercentage = 0;
         this.canEnemyJump = true; // Flag to determine if the enemy can jump
         this.isJumping = false;
-        this.jumpHeight = 30; // Adjust the jump height as needed
+        this.jumpHeight = 40; // Adjust the jump height as needed
         this.jumpDuration = 5;
         this.jumpFrames = 0;
         this.initialY = y; // Store the initial y position

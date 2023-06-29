@@ -14,11 +14,11 @@ class Player {
       this.speed = speed;
       this.damagePercentage = 0;
       this.isJumping = false;
-      this.jumpHeight = 60;
+      this.jumpHeight = 30;
       this.jumpDuration = 5;
       this.jumpFrames = 0;
       this.initialY = y; // Store the initial y position
-      // Add more properties and methods as needed
+      this.id = id; // Add an ID property to uniquely identify each player
     }
   // Add methods for player-specific functionality
   move(canvas) {
@@ -81,4 +81,4 @@ const playerImg = new Image();
 playerImg.src = "./Woodcutter.png"
 
 // Create the player object
-export const player = new Player(100,140,10,10,"blue", playerImg,3);
+export const player = new Player(10,140,5,5,"blue", playerImg,3);
