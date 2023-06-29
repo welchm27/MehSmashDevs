@@ -2,7 +2,7 @@ import { controls } from "./input.js";
 
 // Player class
 class Player {
-    constructor(x, y, width, height, color, speed) {
+    constructor(x, y, width, height, color, image, speed) {
       this.x = x;
       this.y = y;
       this.width = width;
@@ -10,6 +10,7 @@ class Player {
       this.normalHeight = height; // Store the normal height
       this.crouchHeight = height / 2; // Define the crouch height
       this.color = color;
+      this.image = image;
       this.speed = speed;
       this.damagePercentage = 0;
       this.isJumping = false;
@@ -76,5 +77,8 @@ class Player {
   }
 }
 
+const playerImg = new Image();
+playerImg.src = "./Woodcutter.png"
+
 // Create the player object
-export const player = new Player(100,140,10,10,'blue',3);
+export const player = new Player(100,140,10,10,"blue", playerImg,3);

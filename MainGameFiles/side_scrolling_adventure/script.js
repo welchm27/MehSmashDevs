@@ -1,14 +1,20 @@
+// import Player from "./ss_modules/player.js"
+
 window.addEventListener("load", function () {
-    const canvas = document.getElementById("canvas1");
-    const ctx = canvas.getContext("2d");
-    canvas.width = 800;
+  const canvas = document.getElementById("canvas1");
+  const ctx = canvas.getContext("2d");
+  let myAudio = document.querySelector('#audio')
+  myAudio.play();
+  myAudio.volume = 0.5;
+
+  canvas.width = 800;
   canvas.height = 700;
   let enemies = [];
-    let score = 0;
-    let health = 100;
-    let gameOver = false;
-    let gameSpeed = 20;
-    const HIT_BOX_HEIGHT = 2.6;
+  let score = 0;
+  let health = 100;
+  let gameOver = false;
+  let gameSpeed = 20;
+  const HIT_BOX_HEIGHT = 2.6;
   
     const backgroundLayer1 = new Image();
     backgroundLayer1.src = "./assets/background_layers/layer-1.png";
@@ -116,10 +122,10 @@ window.addEventListener("load", function () {
         this.speed = 0;
         this.vy = 0;
         this.weight = 1;
-      }
+    }
       draw(context) {
         context.imageSmoothingEnabled = false;
-
+  
         context.drawImage(
           this.image,
           this.frameX * this.width,
@@ -170,7 +176,7 @@ window.addEventListener("load", function () {
         } else {
           this.frameTimer += deltaTime;
         }
-
+  
         // controls
         if (input.keys.indexOf("w") > -1 && this.onGround()) {
           this.vy -= 30;
@@ -187,13 +193,13 @@ window.addEventListener("load", function () {
         } else {
           gameSpeed = slider.value;
         }
-
+  
         // horizontal movement
         this.x += this.speed;
         if (this.x < 0) this.x = 0;
         else if (this.x > this.gameWidth - this.width)
           this.x = this.gameWidth - this.width;
-
+  
         // vertical movement
         this.y += this.vy;
         if (!this.onGround()) {
