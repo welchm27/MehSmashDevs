@@ -1,5 +1,6 @@
 import { player } from "../modules/player.js";
-import { handleKeyDown, handleKeyUp } from "../modules/input.js";
+import { controls, handleKeyDown, handleKeyUp } from "../modules/input.js";
+import { enemy1 } from "../modules/enemy.js";
 
 // Get a reference to the canvas and its 2D rendering context
 const canvas = document.getElementById('game-canvas');
@@ -9,31 +10,16 @@ const ctx = canvas.getContext('2d');
 window.addEventListener("keydown", handleKeyDown);
 window.addEventListener("keyup", handleKeyUp);
 
-// Enemy class
-class Enemy {
-  constructor(x, y, width, height, color, speed) {
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-    this.color = color;
-    this.speed = speed;
-    this.damagePercentage = 0;
-    // Add more properties and methods as needed
-  }
 
-  // Add methods for enemy-specific functionality
-}
-
-
-// Create the enemy character object
-const enemy = new Enemy(200, 140, 10, 10, 'red', 3);
 
 // Function to update the game state
 function update() {
   // Update player position based on input or AI
-    player.move(canvas);
-  // Update enemy position based on AI
+  player.move(canvas);
+
+  // Update enemy position based on AI (chasing behavior)
+  enemy1.chase(player);
+  enemy1.jump(canvas);
 
   // Check for collisions between characters and stage elements
 
@@ -41,6 +27,8 @@ function update() {
 
   // Render the game elements
   render();
+
+  
 }
 
 // Function to render the game elements on the canvas
@@ -54,9 +42,9 @@ function render() {
   ctx.fillStyle = player.color;
   ctx.fillRect(player.x, player.y, player.width, player.height);
 
-  // Render the enemy character
-  ctx.fillStyle = enemy.color;
-  ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+  // Render the enemy characters
+  ctx.fillStyle = enemy1.color;
+  ctx.fillRect(enemy1.x, enemy1.y, enemy1.width, enemy1.height);
 }
 
 // Game loop
