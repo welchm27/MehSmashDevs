@@ -10,7 +10,7 @@ body {
 }
 #canvas1 {
     position: relative;
-    background: blue;
+    background: black;
     border: 5px solid white;
     width: 800px;
     height: 720px

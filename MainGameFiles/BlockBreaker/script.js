@@ -13,6 +13,7 @@ const BRICK_GAP = 2;
 const BRICK_COLS = 10;
 const BRICK_ROWS = 14;
 
+let returnToMain = document.querySelector(".returnToMain");
 let ballX = 75;
 let ballY = 75;
 let ballSpeedX = 5;
@@ -28,11 +29,15 @@ let bricksLeft = 0;
 canvas.setAttribute ("width", 800);
 canvas.setAttribute ("height", 600);
 
+function goBackToHome() {
+    window.location.href = "../../index.html"; // Navigate to another HTML page
+  }
 
 window.onload = function() {    
     setInterval(updateAll, 1000/framesPerSecond);
     canvas.addEventListener('mousemove', updateMousePos);
-    
+    returnToMain.addEventListener("click", goBackToHome);
+
     brickReset();
     ballReset();
 }
