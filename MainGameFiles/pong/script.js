@@ -4,6 +4,7 @@ const PADDLE_HEIGHT = 100;
 const PADDLE_WIDTH = 10;
 const WIN_SCORE = 3;
 
+let returnToMain = document.querySelector(".returnToMain");
 let ballX = 50;
 let ballY = 50;
 let ballSpeedX = 10;
@@ -41,14 +42,18 @@ function handleMouseClick(evt) {
     }
 }
 
+function goBackToHome() {
+    window.location.href = "../../index.html"; // Navigate to another HTML page
+  }
 
 window.onload = function() {
     const framesPerSecond = 30;
     setInterval(function() {
         moveEverything();
         drawEverything();
-    }, 1000/framesPerSecond);
+    }, 1000 / framesPerSecond);
 
+    returnToMain.addEventListener("click", goBackToHome);
     canvas.addEventListener('mousedown', handleMouseClick);
 
     canvas.addEventListener('mousemove', function(evt) {
