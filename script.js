@@ -3,7 +3,7 @@ function startGame() {
 }
 
 function openDifferentPage() {
-  window.location.href = "./"; // Navigate to a multiplayer TODO: make multiplayer
+  window.location.href = "https://multiplayerhoster-production.up.railway.app/multiplayer"; // Navigate to a multiplayer TODO: make multiplayer
 }
 
 function openAnotherPage() {
